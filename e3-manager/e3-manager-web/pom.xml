@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.e3mall</groupId>
+		<artifactId>e3-manager</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>e3-manager-web</artifactId>
+	<packaging>war</packaging>
+	<description>
+聚合工程最终会将该聚合工程下的模块打包到这个war包下面,必须要有这个war包
+</description>
+
+	<dependencies>
+		<!-- 表现层要依赖service -->
+		<dependency>
+			<groupId>cn.e3mall</groupId>
+			<artifactId>e3-manager-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- 因为web下面还有jsp所以还需要依赖jsp相关的东西 -->
+		<!-- JSP相关 -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<!-- provided:编译,测试,运行都会用到这个jar包,但是打成war包是并不会放到里面去,因为web容器都会提供这个,再放进去会冲突 -->
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+</project>

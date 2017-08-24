@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.e3mall</groupId>
+		<artifactId>e3-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>e3-manager</artifactId>
+	<packaging>pom</packaging>
+	<description>这是聚合工程,用于将下面的maven模块进行,同一管理</description>
+	<!-- 聚合工程依赖common,这样他的子模块(工程)就会继承的依赖common -->
+	<dependencies>
+		<dependency>
+			<!-- 这是common的坐标 -->
+			<groupId>cn.e3mall</groupId>
+			<artifactId>e3-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+	</dependencies>
+	<!-- 在聚合工程中定义tomcat插件,运行聚合工程的时候,会顺带把子模块进行聚合 -->
+	<build>
+		<plugins>
+			<!-- 配置Tomcat插件 -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<path>/</path>
+					<port>8080</port>
+				</configuration>
+			</plugin>
+		</plugins>
+
+
+	</build>
+
+	<modules>
+		<module>e3-manager-pojo</module>
+		<module>e3-manager-dao</module>
+		<module>e3-manager-service</module>
+		<module>e3-manager-interface</module>
+		<module>e3-manager-web</module>
+	</modules>
+</project>
